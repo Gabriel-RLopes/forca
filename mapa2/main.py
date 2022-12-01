@@ -4,8 +4,8 @@ class JogoDaForca():
         _________
         |        |
         |        o
-        |       /|\
-        |       / \
+        |       /|\\
+        |       / \\
         |
         |
         ______________''',
@@ -13,7 +13,7 @@ class JogoDaForca():
         _________
         |        |
         |        o
-        |       /|\
+        |       /|\\
         |       / 
         |
         |
@@ -22,7 +22,7 @@ class JogoDaForca():
         _________
         |        |
         |        o
-        |       /|\
+        |       /|\\
         |       
         |
         |
@@ -110,31 +110,16 @@ class JogoDaForca():
                 >>"""))
 
         if tipo == 1:
-            qtd_frutas = sample([1, 2, 3, 4, 5], 1)[0]
-            fruta = sample(self.frutas, qtd_frutas)
-            if qtd_frutas > 1:
-                palavra = ' '.join(fruta)
-            else:
-                palavra = fruta[0]
+            palavra = sample(self.frutas, 1)[0]
             self.tipo_palavra = 'fruta'
         elif tipo == 2:
-            qtd_animais = sample([1, 2, 3, 4, 5], 1)[0]
-            animal = sample(self.animais, qtd_animais)
-            if qtd_animais > 1:
-                palavra = ' '.join(animal)
-            else:
-                palavra = animal[0]
+            palavra = sample(self.animais, 1)[0]
             self.tipo_palavra = 'animal'
         elif tipo == 3:
-            qtd_objetos = sample([1, 2, 3, 4, 5], 1)[0]
-            objeto = sample(self.objetos, qtd_objetos)
-            if qtd_objetos > 1:
-                palavra = ' '.join(objeto)
-            else:
-                palavra = objeto[0]
+            palavra = sample(self.objetos, 1)[0]
             self.tipo_palavra = 'objeto'
         else:
-            qtd_nomes = sample([1, 2, 3, 4, 5], 1)[0]
+            qtd_nomes = sample([1, 2, 3], 1)[0]
             nome = sample(self.nomes, qtd_nomes)
             if qtd_nomes > 1:
                 palavra = ' '.join(nome)
