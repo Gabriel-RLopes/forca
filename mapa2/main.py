@@ -1,4 +1,4 @@
-class JogoDaForca():
+class JogoDaForca:
     def __init__(self):
         self.forca = ['''
         _________
@@ -83,7 +83,7 @@ class JogoDaForca():
         self.vitoria = False
         self.derrota = False
 
-    #-----------------------------------------------------------------------
+    # -----------------------------------------------------------------------
 
     def f_palavra(self):
         print('Precione ENTER para continuar!')
@@ -99,7 +99,7 @@ class JogoDaForca():
                             4 - Nomes de pessoas
                 >>"""))
 
-        while tipo not in [1,2,3,4]:
+        while tipo not in [1, 2, 3, 4]:
             tipo = int(input("""
                                 Escolha se a palavra sera uma fruta, um animal, um objeto ou o nome de uma pessoa.
                                 Escolha entre:
@@ -131,22 +131,22 @@ class JogoDaForca():
         self.palavra_chave = palavra
         return
 
-    #---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
-    def auxilio(self,i=0,cased='lower'):
+    def auxilio(self, i=0, cased='lower'):
         if self.tipo_palavra.lower() == 'fruta':
             lst = ['esta', 'a']
         elif self.tipo_palavra.lower() in ['animal', 'objeto', 'nome']:
             lst = ['este', 'o']
 
-        case = { 'lower': lst[i].lower(),
-                 'upper': lst[i].upper(),
-                 'title': lst[i].title(),
-                 'capitalize': lst[i].capitalize()}
+        case = {'lower': lst[i].lower(),
+                'upper': lst[i].upper(),
+                'title': lst[i].title(),
+                'capitalize': lst[i].capitalize()}
 
         return case[cased]
 
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     def f_status(self):
         print(f"""Voce tem que advinhar qual e {self.auxilio(1)} {self.tipo_palavra.upper()}!
@@ -155,7 +155,7 @@ class JogoDaForca():
               {self.f_display_forca()} {self.f_display_palavra_oculta()}
         """)
 
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     def f_condenacao(self):
         print(f"""
@@ -173,12 +173,12 @@ class JogoDaForca():
         self.condenacao = True
         return
 
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     def f_display_forca(self):
-        return self.forca[int(f'-{self.erros+1}')]
+        return self.forca[int(f'-{self.erros + 1}')]
 
-    #----------------------------------------------------------------------------
+    # ----------------------------------------------------------------------------
 
     def f_display_palavra_oculta(self):
         if not self.palavra_chave:
@@ -188,7 +188,7 @@ class JogoDaForca():
 
         return palavra
 
-    #-----------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------
 
     def f_chutes(self):
         self.palavra_oculta = ['_' for letra in self.palavra_chave]
@@ -197,7 +197,7 @@ class JogoDaForca():
                 self.palavra_oculta[i] = ' '
 
         while '_' in self.palavra_oculta:
-            if self.erros+1 == len(self.forca):
+            if self.erros + 1 == len(self.forca):
                 self.derrota = True
                 break
             self.f_status()
@@ -285,17 +285,19 @@ Como consequencia, uma parte de seu corpo sera adicionada na forca!!!
         input()
         self.f_condenacao()
 
-        if self.condenacao == True:
+        if self.condenacao:
             self.f_palavra()
-        if self.palavra == True:
+        if self.palavra:
             self.f_chutes()
-        if self.vitoria == True:
+        if self.vitoria:
             self.f_vitoria()
-        if self.derrota == True:
+        if self.derrota:
             self.f_morte()
+
 
 def game():
     jogo = JogoDaForca()
     jogo.f_play()
+
 
 game()
